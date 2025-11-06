@@ -273,3 +273,30 @@ tbody tr td:last-child {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #ff6b6b, #48dbfb);
 }
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff6b6b, #c44569);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #c44569, #ff4757);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 14px 20px;
+}
