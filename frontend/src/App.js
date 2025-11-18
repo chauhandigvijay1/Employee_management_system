@@ -5,6 +5,8 @@ import Login from "./components/Auth/Login";
 import PrivateRoute from "./components/Auth/PrivateRoute";
 import Dashboard from "./components/Dashboard/Dashboard";
 import EmployeeList from "./components/Employee/EmployeeList";
+import EmployeeForm from "./components/Employee/EmployeeForm";
+import EmployeeProfile from "./components/Employee/EmployeeProfile";
 import "./App.css";
 
 function App() {
@@ -34,24 +36,29 @@ function App() {
             }
           />
           
-          {/* Admin Only Routes - Example */}
           <Route
-            path="/admin"
+            path="/employees/add"
             element={
-              <PrivateRoute roles={["admin"]}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '100vh',
-                  background: '#0f0f23',
-                  color: '#fff',
-                  textAlign: 'center',
-                  flexDirection: 'column'
-                }}>
-                  <h1>👑 Admin Panel</h1>
-                  <p>Coming Soon...</p>
-                </div>
+              <PrivateRoute roles={["admin", "manager"]}>
+                <EmployeeForm />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/employees/edit/:id"
+            element={
+              <PrivateRoute roles={["admin", "manager"]}>
+                <EmployeeForm />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/employees/view/:id"
+            element={
+              <PrivateRoute>
+                <EmployeeProfile />
               </PrivateRoute>
             }
           />
@@ -74,7 +81,6 @@ function App() {
                 gap: '20px'
               }}>
                 <h1>404 - Page Not Found</h1>
-                <p>The page you're looking for doesn't exist.</p>
               </div>
             }
           />
